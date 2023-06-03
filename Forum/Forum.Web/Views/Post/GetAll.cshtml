@@ -1,0 +1,22 @@
+﻿@model List<PostViewModel>
+
+@{
+    ViewBag.Title = "All Posts";
+}
+
+<a asp-controller="Post" asp-action="Add" class="btn btn-primary mb-3">Add new post</a>
+
+<div class="d-flex flex-wrap gap-5">
+    @foreach (var post in Model)
+    {
+        <div class="card" style="max-width: 18rem; width: 100%">
+            <div class="card-body">
+                <h5 class="card-title">@post.Title</h5>
+                <p class="card-text">@post.Content</p>
+                <a asp-controller="Post" asp-action="Edit" asp-route-id="@post.Id" class="btn btn-warning">Edit post</a>
+                <a asp-controller="Post" asp-action="Delete" asp-route-id="@post.Id" class="btn btn-danger">Delete post</a>
+            </div>
+        </div>
+    }
+</div>
+
